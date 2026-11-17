@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#121820">
+  <title>محاكي القيادة والفتيس اليدوي</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="container">
+  <h1>🚗 محاكي القيادة والفتيس اليدوي</h1>
+
+  <section class="panel">
+    <h3>اختر المركبة</h3>
+    <div class="cars">
+      <button class="car-choice active" data-car="normal"><span>🚗</span>سيارة عادية<small>متوازنة</small></button>
+      <button class="car-choice" data-car="sport"><span>🏎️</span>سيارة رياضية<small>سريعة</small></button>
+      <button class="car-choice" data-car="truck"><span>🚚</span>شاحنة<small>قوة وعزم</small></button>
+    </div>
+  </section>
+
+  <div class="road stopped" id="road">
+    <div class="road-label" id="roadStatus">متوقف</div>
+    <div class="car-view" id="carView">🚗</div>
+  </div>
+
+  <section class="panel">
+    <h3>لوحة القيادة</h3>
+    <div class="dashboard">
+      <div class="metric"><span>السرعة km/h</span><strong id="speed">0</strong></div>
+      <div class="metric"><span>دورات المحرك RPM</span><strong id="rpm">800</strong></div>
+      <div class="metric"><span>الترس الحالي</span><strong id="gearDisplay">N</strong></div>
+      <div class="metric"><span>حرارة المحرك °C</span><strong id="temp">85</strong></div>
+      <div class="metric"><span>الوقود %</span><strong id="fuel">100</strong></div>
+      <div class="metric"><span>المسافة km</span><strong id="distance">0.00</strong></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h3>حالة المركبة</h3>
+    <div class="row"><span>حرارة المحرك</span><span id="tempText">طبيعية</span></div>
+    <div class="progress"><div class="bar" id="tempBar"></div></div>
+    <div class="row"><span>مستوى الوقود</span><span id="fuelText">100%</span></div>
+    <div class="progress"><div class="bar" id="fuelBar"></div></div>
+    <div class="row"><span>نقاط التطوير</span><strong id="points">0</strong></div>
+    <div class="row"><span>المسافة القادمة للتطوير</span><strong id="nextPoints">100 متر</strong></div>
+    <div class="row"><span>حالة المحرك</span><strong id="engineState" class="good">سليم</strong></div>
+  </section>
+
+  <section class="panel">
+    <h3>ناقل الحركة اليدوي</h3>
+    <div class="gears">
+      <button class="gear active" data-gear="N">N</button>
+      <button class="gear" data-gear="1">1</button>
+      <button class="gear" data-gear="2">2</button>
+      <button class="gear" data-gear="3">3</button>
+      <button class="gear" data-gear="4">4</button>
+      <button class="gear" data-gear="5">5</button>
+      <button class="gear" data-gear="R">R</button>
+    </div>
+    <p class="info">اضغط القابض قبل تغيير الترس. N للوضع المحايد وR للرجوع للخلف.</p>
+  </section>
+
+  <section class="panel">
+    <h3>دواسات القيادة</h3>
+    <div class="controls">
+      <button class="pedal clutch" id="clutch">القابض<br>Clutch</button>
+      <button class="pedal brake" id="brake">الفرامل<br>Brake</button>
+      <button class="pedal gas" id="gas">البنزين<br>Gas</button>
+    </div>
+    <p class="info">اضغط باستمرار على الدواسة لتفعيلها، واتركها لإيقاف الضغط.</p>
+  </section>
+
+  <section class="panel">
+    <h3>المحرك والتبريد</h3>
+    <div class="controls utility">
+      <button id="coolButton">❄️ تشغيل التبريد</button>
+      <button id="engineButton">إطفاء المحرك</button>
+      <button id="refuelButton">⛽ تعبئة الوقود</button>
+    </div>
+    <p class="info" id="coolText">نظام التبريد متوقف.</p>
+  </section>
+
+  <section class="panel">
+    <h3>متجر التطوير</h3>
+    <div class="row"><span>نقاطك المتاحة</span><strong id="shopPoints">0</strong></div>
+    <div class="upgrade-row"><span>تحسين المحرك (+15% قوة)</span><button data-upgrade="engine">100 نقطة</button></div>
+    <div class="upgrade-row"><span>تحسين التبريد (+20%)</span><button data-upgrade="cooling">100 نقطة</button></div>
+    <div class="upgrade-row"><span>تحسين استهلاك الوقود (-15%)</span><button data-upgrade="fuel">100 نقطة</button></div>
+    <p class="info">كل 100 متر تقطعها تحصل على 10 نقاط تطوير.</p>
+  </section>
+
+  <section class="panel">
+    <h3>المعلومات والمهام</h3>
+    <div class="row"><span>المهمة الحالية</span><strong id="mission">انطلق لمسافة 3 كم</strong></div>
+    <div class="row"><span>المحطة القادمة</span><strong id="station">3.00 km</strong></div>
+    <div class="row"><span>إجمالي النقاط المكتسبة</span><strong id="totalPoints">0</strong></div>
+    <p class="info" id="message">المحرك يعمل. اضغط القابض، اختر الترس الأول، ثم ابدأ القيادة.</p>
+  </section>
+</main>
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
